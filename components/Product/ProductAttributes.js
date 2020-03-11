@@ -1,5 +1,6 @@
 import { Header, Button } from "semantic-ui-react";
 
+/**components */
 function ProductAttributes({ description }) {
   return (
     <>

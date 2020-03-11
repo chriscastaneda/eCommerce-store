@@ -1,6 +1,7 @@
 import { Item, Label } from "semantic-ui-react";
 import AddProductToCart from "./AddProductToCart";
 
+/*get data from schema obj*/
 function ProductSummary({ name, mediaUrl, _id, price, sku }) {
   return (
     <Item.Group>

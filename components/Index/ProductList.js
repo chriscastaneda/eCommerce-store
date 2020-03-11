@@ -1,5 +1,27 @@
-function ProductList() {
-  return <>ProductList</>;
+import { Card } from "semantic-ui-react";
+
+/**Card Style from Semantic UI */
+function ProductList({ products }) {
+  function mapProductsToItems(products) {
+    return products.map(product => ({
+      header: product.name,
+      image: product.mediaUrl,
+      meta: `$${product.price}`,
+      color: "teal",
+      fluid: true,
+      childKey: products._id /**React Key association */,
+      href: `/product?_id=${product._id}` /**routing for query string */
+    }));
+  }
+
+  return (
+    <Card.Group
+      stackable
+      itemsPerRow="3"
+      centered
+      items={mapProductsToItems(products)}
+    />
+  );
 }
 
 export default ProductList;

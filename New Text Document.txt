@@ -1,0 +1,8 @@
+axios for htttp
+semantic-ui like bootstrap
+next.js for server/route library webpack
+mongoose for apis
+nprogress for loading bar animation
+shortid for generating product id for database
+mongodb database
+cloudinary to host new product images uploaded

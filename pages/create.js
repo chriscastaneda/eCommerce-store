@@ -9,6 +9,8 @@ import {
   Header,
   Icon
 } from "semantic-ui-react";
+import axois from 'axios'
+import baseYrl from '../utils/baseUrl'
 
 /**Object template */
 const INITIAL_PRODUCT = {
@@ -46,10 +48,28 @@ function CreateProduct() {
     }
   }
 
+  /**Cloudinary,com images Post Request */
+  async function handleImageUpload{
+    const data = new FormData()
+    data.append('file', product.media) /**key*/
+    data.append('upload_preset', 'reactreserve') 
+    data.append('cloud_name', 'reedbargercodes') /**dashboard cloud name */
+    const repsonse = await axios.post
+    (process.env.CLOUDINARY_URL, data)
+    const mediaUrl = response.data.url 
+    return mediaUrl;
+  }
+
   /**Submit form success Handler*/
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(product);
+    /**Cloudianry get request and spread to page */
+    const mediaUrl = await handleImageUpload()
+    console.log({ mediaUrl})
+    //const url = `${baseUrl}/api/product`
+    //const payload = { ...product, mediaUrl } = product
+    //const payload = { name, price, description, mediaUrl };
+    //await axios.post(url, payload); /**post request to cloudinary */
     setProduct(INITIAL_PRODUCT); /**reset fields */
     setSuccess(true); /**Display Success message */
   }
